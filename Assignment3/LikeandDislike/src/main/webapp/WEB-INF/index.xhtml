@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>JSF Action Event Listener Example</title>
+</h:head>
+
+<h:body>
+    <h2>Action Event Listener — Like/Dislike Counter</h2>
+
+    <h:form>
+        <h:commandButton value="👍 Like">
+            <f:ajax listener="#{clickBean.like}" render="likeCount" />
+        </h:commandButton>
+
+        &nbsp;&nbsp;
+
+        <h:commandButton value="👎 Dislike">
+            <f:ajax listener="#{clickBean.dislike}" render="dislikeCount" />
+        </h:commandButton>
+
+        <br/><br/>
+
+        <h:outputText id="likeCount" value="Likes: #{clickBean.likeCount}" />
+        <br/>
+        <h:outputText id="dislikeCount" value="Dislikes: #{clickBean.dislikeCount}" />
+    </h:form>
+</h:body>
+</html>

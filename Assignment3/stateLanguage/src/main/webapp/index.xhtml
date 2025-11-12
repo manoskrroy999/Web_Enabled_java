@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://jakarta.ee/xml/ns/jakartaee"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>JSF Value Change Listener Example</title>
+</h:head>
+<h:body>
+    <h2>State → Language Display Example</h2>
+
+    <h:form>
+        <h:outputLabel for="state" value="Select State: " />
+        <h:selectOneMenu id="state" value="#{stateBean.selectedState}">
+            <f:selectItem itemLabel="--Select--" itemValue="" />
+            <f:selectItem itemLabel="Tamil Nadu" itemValue="Tamil Nadu" />
+            <f:selectItem itemLabel="Maharashtra" itemValue="Maharashtra" />
+            <f:selectItem itemLabel="Karnataka" itemValue="Karnataka" />
+            <f:selectItem itemLabel="Kerala" itemValue="Kerala" />
+            <f:selectItem itemLabel="Gujarat" itemValue="Gujarat" />
+            <f:valueChangeListener type="com.example.bean.StateBean" binding="#{stateBean.stateChanged}" />
+            <f:ajax listener="#{stateBean.stateChanged}" render="lang" />
+        </h:selectOneMenu>
+
+        <br/><br/>
+        <h:outputText id="lang" value="Language: #{stateBean.language}" />
+    </h:form>
+</h:body>
+</html>
